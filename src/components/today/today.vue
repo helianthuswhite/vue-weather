@@ -10,7 +10,7 @@
         <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly_forecast">
           <span class="time">{{ index == 0?'现在':hour_forecast.date.substr(hour_forecast.date.length - 5) }}</span>
           <span class="pop">{{ hour_forecast.pop }}%</span>
-          <img class="icon" src="../../assets/img/306.png" height="25" width="25">
+          <img class="icon" src="../../../static/img/306.png" height="25" width="25">
           <span class="tmp">{{ hour_forecast.tmp }}°</span>
         </li>
       </ul>

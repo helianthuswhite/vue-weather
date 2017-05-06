@@ -2,18 +2,21 @@
   <div style="background: rgb(73,128,230);">
     <v-header :weather="weather"></v-header>
     <today></today>
+    <future :weather="weather"></future>
   </div>
 </template>
 
 <script>
 import header from './components/header/header.vue';
 import today from './components/today/today.vue';
+import future from './components/future/future.vue';
 
 export default {
   name: 'app',
   components: {
     'v-header': header,
-    today
+    today,
+    future
   },
   data() {
     return {
