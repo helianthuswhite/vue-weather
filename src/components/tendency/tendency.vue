@@ -1,5 +1,6 @@
 <template>
   <div class="tendency border-1px">
+    <h3 class="title">7日内温度变化</h3>
     <canvas id="canvas" ref='canvas'></canvas>
   </div>
 </template>
@@ -8,29 +9,51 @@
   import {init} from './drawWeather.js';
 
   export default {
-    props: ['weather'],
     data() {
       return {
         options: {
           width: document.body.clientWidth,
-          height: 450,
-          xAxis: ['苹果', '香蕉', '梨', '番茄', '龙眼'],
-          lineData: [350, 200, 300, 245, 150],
-          barData: [350, 134, 120, 51, 90],
-          colorArr: ['#ae303e', '#913730', '#D49797', '0x538FD3', '#A34e5d'],
-          onSomeEvent: function() {
-          }
+          height: 300,
+          color: '#fff',
+          heightNum: 7,
+          heightMax: 35,
+          xAxis: [],
+          minTmp: [],
+          maxTmp: []
         }
       };
     },
     created() {
-      this.$nextTick(() => {
-        init(this.options);
+      const day = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      const apikey = '1aa0be9a6fb48e3bcf5d7060a6c201af';
+      this.$http.get('http://apis.baidu.com/heweather/pro/weather?city=haerbin', { headers: { 'apikey': apikey } }).then((response) => {
+        this.weather = response.body['HeWeather data service 3.0'][0];
+        for (let i = 0; i < 7; i++) {
+          this.options.xAxis.push(day[new Date(this.weather.daily_forecast[i].date).getDay()]);
+          this.options.minTmp.push(this.weather.daily_forecast[i].tmp.min);
+          this.options.maxTmp.push(this.weather.daily_forecast[i].tmp.max);
+        }
+        this.$nextTick(() => {
+          console.log(this.options);
+          init(this.options);
+        });
       });
     }
   };
 </script>
 
 <style lang="less">
-
+  .tendency {
+    .title {
+      position: absolute;
+      width: 100%;
+      top: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+    }
+    #canvas {
+      margin-left: 15px;
+    }
+  }
 </style>
