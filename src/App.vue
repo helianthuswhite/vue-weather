@@ -1,7 +1,7 @@
 <template>
   <div style="background: rgb(73,128,230);">
-    <v-header :weather="weather" ></v-header>
-    <today :weather="weather"></today>
+    <v-header :weather="weather"></v-header>
+    <today></today>
   </div>
 </template>
 

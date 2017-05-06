@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "better-scroll": "^0.1.15",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "vue": "^2.2.6",

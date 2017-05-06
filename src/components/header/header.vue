@@ -37,13 +37,16 @@
       }
       .temper {
         position: relative;
+        width: 60px;
+        left: 50%;
+        margin-left: -30px;
         font-size: 60px;
         line-height: 80px;
         .dot {
           position: absolute;
           display: block;
-          top: -8px;
-          right: 41%;
+          top: 0;
+          right: -5px;
           font-size: 40px;
         }
       }
