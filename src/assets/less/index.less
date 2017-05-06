@@ -1,0 +1,40 @@
+body, html {
+  line-height: 1;
+  font-weight: 200;
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light',arial,sans-serif;
+}
+
+.clearfix {
+  display: inline-block;
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.border-1px {
+  position: relative;
+  &::after {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border: solid 1px #fff; 
+    content: '';
+    display: block;
+  }
+  @media (min-device-pixel-ratio: 1.5),(-webkit-min-device-pixel-ratio: 1.5) {
+    &::after {
+      transform: scaleY(0.7);
+      -webkit-transform: scaleY(0.7);
+    } 
+  }
+  @media (min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 2) {
+    &::after {
+      transform: scaleY(0.5);
+      -webkit-transform: scaleY(0.5);
+    } 
+  }
+}
+
