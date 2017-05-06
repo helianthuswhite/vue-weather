@@ -1,7 +1,7 @@
 <template>
   <div class="future border-1px" v-if="this.weather">
     <ul>
-      <li v-for="daily_forecast in this.weather.daily_forecast" class="item">
+      <li v-for="(daily_forecast,index) in this.weather.daily_forecast" class="item" v-if="index !== 0">
         <span class="day">{{ day[new Date(daily_forecast.date).getDay()] }}</span>
         <span class="icon"><img :src="`../../../static/img/${daily_forecast.cond.code_d}.png`" width="25" height="25"></span>
         <span class="tmp">
