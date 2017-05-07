@@ -6,6 +6,7 @@
     <tendency :weather="weather"></tendency>
     <v-summary :weather="weather"></v-summary>
     <v-details :weather="weather"></v-details>
+    <v-footer :weather="weather"></v-footer>
   </div>
 </template>
 
@@ -16,6 +17,9 @@ import future from './components/future/future.vue';
 import tendency from './components/tendency/tendency.vue';
 import summary from './components/summary/summary.vue';
 import details from './components/details/details.vue';
+import footer from './components/footer/footer.vue';
+
+import {getWeather} from './assets/js/getWeather';
 
 export default {
   name: 'app',
@@ -25,7 +29,8 @@ export default {
     future,
     tendency,
     'v-summary': summary,
-    'v-details': details
+    'v-details': details,
+    'v-footer': footer
   },
   data() {
     return {
@@ -33,10 +38,9 @@ export default {
     };
   },
   created() {
-    const apikey = '1aa0be9a6fb48e3bcf5d7060a6c201af';
-    this.$http.get('http://apis.baidu.com/heweather/pro/weather?city=haerbin', { headers: { 'apikey': apikey } }).then((response) => {
-      this.weather = response.body['HeWeather data service 3.0'][0];
-      console.log(response.body['HeWeather data service 3.0'][0]);
+    getWeather().then((res) => {
+      this.weather = res;
+      console.log(this.weather);
     });
   }
 };

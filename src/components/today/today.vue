@@ -20,6 +20,7 @@
 
 <script>
   import BScroll from 'better-scroll';
+  import {getWeather} from '../../assets/js/getWeather';
 
   export default {
     data() {
@@ -57,9 +58,8 @@
       }
     },
     created() {
-      const apikey = '1aa0be9a6fb48e3bcf5d7060a6c201af';
-      this.$http.get('http://apis.baidu.com/heweather/pro/weather?city=haerbin', { headers: { 'apikey': apikey } }).then((response) => {
-        this.weather = response.body['HeWeather data service 3.0'][0];
+      getWeather().then((res) => {
+        this.weather = res;
         this.$nextTick(() => {
           this.initScroll();
         });
