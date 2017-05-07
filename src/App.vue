@@ -1,11 +1,15 @@
 <template>
-  <div style="background: rgb(73,128,230);">
+  <div style="background: rgb(73,128,230);position:relative;">
     <v-header :weather="weather"></v-header>
-    <today></today>
-    <future :weather="weather"></future>
-    <tendency :weather="weather"></tendency>
-    <v-summary :weather="weather"></v-summary>
-    <v-details :weather="weather"></v-details>
+    <div class="app-body">
+      <div class="wrapper">
+        <today></today>
+        <future :weather="weather"></future>
+        <tendency></tendency>
+        <v-summary :weather="weather"></v-summary>
+        <v-details :weather="weather"></v-details>
+      </div>
+    </div>
     <v-footer :weather="weather"></v-footer>
   </div>
 </template>
@@ -46,6 +50,11 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="less">
+  .app-body {
+    position: relative;
+    height: 100%;
+    // overflow: hidden;
+    padding-bottom: 45px;
+  }
 </style>

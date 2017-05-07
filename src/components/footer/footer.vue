@@ -1,5 +1,6 @@
 <template>
   <div class="footer">
+    <a href="#" class="change-city">更改城市</a>
   </div>
 </template>
 
@@ -18,7 +19,7 @@
   .footer {
     position: fixed;
     width: 100%;
-    height: 50px;
+    height: 45px;
     left: 0;
     bottom: 0;
     &::before {
@@ -42,6 +43,14 @@
         transform: scaleY(0.5);
         -webkit-transform: scaleY(0.5);
       } 
+    }
+    .change-city {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
     }
   }
 </style>
