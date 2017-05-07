@@ -5,6 +5,7 @@
     <future :weather="weather"></future>
     <tendency :weather="weather"></tendency>
     <v-summary :weather="weather"></v-summary>
+    <v-details :weather="weather"></v-details>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import today from './components/today/today.vue';
 import future from './components/future/future.vue';
 import tendency from './components/tendency/tendency.vue';
 import summary from './components/summary/summary.vue';
+import details from './components/details/details.vue';
 
 export default {
   name: 'app',
@@ -22,7 +24,8 @@ export default {
     today,
     future,
     tendency,
-    'v-summary': summary
+    'v-summary': summary,
+    'v-details': details
   },
   data() {
     return {
