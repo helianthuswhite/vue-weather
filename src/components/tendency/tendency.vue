@@ -34,7 +34,6 @@
           this.options.maxTmp.push(this.weather.daily_forecast[i].tmp.max);
         }
         this.$nextTick(() => {
-          console.log(this.options);
           init(this.options);
         });
       });
@@ -44,6 +43,7 @@
 
 <style lang="less">
   .tendency {
+    overflow: hidden;
     .title {
       position: absolute;
       width: 100%;
@@ -53,7 +53,7 @@
       color: #fff;
     }
     #canvas {
-      margin-left: 15px;
+      padding-left: 15px;
     }
   }
 </style>

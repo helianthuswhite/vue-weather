@@ -2,7 +2,7 @@
   <div class="header">
    <div class="content" v-if="this.weather.basic">
      <p class="city">{{ this.weather.basic.city }}市</p>
-     <span class="weather">{{ this.weather.now.cond.txt }}</span>
+     <p class="weather">{{ this.weather.now.cond.txt }}</p>
      <p class="temper">{{ this.weather.now.tmp }}<span class="dot">°</span></p>
    </div>
   </div>
@@ -37,16 +37,14 @@
       }
       .temper {
         position: relative;
-        width: 60px;
-        left: 50%;
-        margin-left: -30px;
+        display: inline-block;
         font-size: 60px;
         line-height: 80px;
         .dot {
           position: absolute;
           display: block;
           top: 0;
-          right: -5px;
+          right: -15px;
           font-size: 40px;
         }
       }
