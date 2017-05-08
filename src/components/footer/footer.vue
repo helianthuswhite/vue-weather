@@ -1,6 +1,7 @@
 <template>
   <div class="footer">
-    <a href="#" class="change-city">更改城市</a>
+    <span class="github"><a href="http://github.com/helianthuswhite/vue-weather"></a></span>
+    <span class="change-city"><router-link to="/city"></router-link></span>
   </div>
 </template>
 
@@ -18,10 +19,13 @@
 <style lang="less">
   .footer {
     position: fixed;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 45px;
     left: 0;
     bottom: 0;
+    background: rgb(73,128,230);
     &::before {
       position: absolute;
       width: 100%;
@@ -44,13 +48,28 @@
         -webkit-transform: scaleY(0.5);
       } 
     }
-    .change-city {
-      display: block;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      line-height: 40px;
-      color: #fff;
+    span {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 35px;
+      height: 35px;
+      font-size: 12px;
+      &.github {
+        margin-left: 15px;
+        background-image: url('../../../static/img/github.png');
+        background-size: 100% 100%;
+      }
+      &.change-city {
+        position: absolute;
+        right: 15px;
+        background-image: url('../../../static/img/501.png');
+        background-size: 100% 100%;
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 </style>

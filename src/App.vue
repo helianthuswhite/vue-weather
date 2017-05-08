@@ -11,6 +11,9 @@
       </div>
     </div>
     <v-footer :weather="weather"></v-footer>
+    <transition name="slide">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -54,7 +57,16 @@ export default {
   .app-body {
     position: relative;
     height: 100%;
-    // overflow: hidden;
     padding-bottom: 45px;
+  }
+  .slide-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-enter, .slide-leave-active {
+    transform: translateY(100%);
+    opacity: 0;
   }
 </style>
