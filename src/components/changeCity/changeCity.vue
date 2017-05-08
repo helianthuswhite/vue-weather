@@ -8,7 +8,6 @@
   import list from '../list/list';
 
   export default {
-    props: ['weather'],
     components: {
       list
     },
