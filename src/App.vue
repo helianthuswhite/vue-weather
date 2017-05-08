@@ -48,10 +48,16 @@ export default {
     };
   },
   created() {
-    getWeather().then((res) => {
+    const city = this.$router.params.city;
+    getWeather(city).then((res) => {
       this.weather = res;
       console.log(res);
     });
+  },
+  methods: {
+    getCity(value) {
+      console.log(value);
+    }
   }
 };
 </script>

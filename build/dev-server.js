@@ -31,14 +31,10 @@ var provinceData = [];
 
 var types = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-var cityData = [];
+var cityData = {};
 
 for (let i in types) {
   provinceData.push({
-    type: types[i],
-    values: []
-  });
-  cityData.push({
     type: types[i],
     values: []
   });
@@ -50,12 +46,28 @@ for (let i in appData) {
       province.values.push(appData[i].provinceZh);
     }
   }
-  for (let city of cityData) {
+
+  cityData[appData[i].provinceZh] = [];
+}
+
+for (let province in cityData) {
+  for (let i in types) {
+    cityData[province].push({
+      type: types[i],
+      values: []
+    });
+  }
+}
+
+for (let i in appData) {
+  for (let city of cityData[appData[i].provinceZh]) {
     if (city.type === appData[i].cityEn[0]) {
       city.values.push(appData[i].cityZh);
     }
   }
 }
+
+console.log(cityData);
 
 for (let province of provinceData) {
   var s = new Set(province.values);
