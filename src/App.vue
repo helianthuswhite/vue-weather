@@ -47,7 +47,7 @@ export default {
   created() {
     getWeather().then((res) => {
       this.weather = res;
-      console.log(this.weather);
+      console.log(res);
     });
   }
 };
