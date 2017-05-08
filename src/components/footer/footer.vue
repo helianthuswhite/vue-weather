@@ -25,7 +25,10 @@
     height: 45px;
     left: 0;
     bottom: 0;
-    background: rgb(73,128,230);
+    // background: rgb(12, 102, 214); sun
+    // background: rgb(12, 15, 20); rain
+    // background: rgb(0, 0, 0); thunder
+    background: rgb(24, 50, 89);
     &::before {
       position: absolute;
       width: 100%;

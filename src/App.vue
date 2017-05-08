@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgb(73,128,230);position:relative;">
+  <div style="position:relative;">
     <v-header :weather="weather"></v-header>
     <div class="app-body">
       <div class="wrapper">
@@ -14,6 +14,7 @@
     <transition name="slide">
       <router-view></router-view>
     </transition>
+    <div class="background"></div>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import tendency from './components/tendency/tendency.vue';
 import summary from './components/summary/summary.vue';
 import details from './components/details/details.vue';
 import footer from './components/footer/footer.vue';
+import background from './components/background/background.vue';
 
 import {getWeather} from './assets/js/getWeather';
 
@@ -37,7 +39,8 @@ export default {
     tendency,
     'v-summary': summary,
     'v-details': details,
-    'v-footer': footer
+    'v-footer': footer,
+    background
   },
   data() {
     return {
@@ -68,5 +71,14 @@ export default {
   .slide-enter, .slide-leave-active {
     transform: translateY(100%);
     opacity: 0;
+  }
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgb(24, 50, 89), rgb(52, 130, 186));
   }
 </style>

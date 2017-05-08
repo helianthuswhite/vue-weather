@@ -1,13 +1,17 @@
 <template>
   <div class="changeCity">
-    
+    <list></list>
   </div>
 </template>
 
 <script>
+  import list from '../list/list';
 
   export default {
     props: ['weather'],
+    components: {
+      list
+    },
     data() {
       return {
       };
@@ -23,6 +27,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000;
+    background: #fff;
   }
 </style>
