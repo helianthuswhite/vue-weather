@@ -10,6 +10,7 @@
   import {getWeather} from '../../assets/js/getWeather';
 
   export default {
+    props: ['city'],
     data() {
       return {
         options: {
@@ -26,7 +27,7 @@
     },
     created() {
       const day = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-      getWeather().then((res) => {
+      getWeather(this.city).then((res) => {
         this.weather = res;
         for (let i = 0; i < 7; i++) {
           this.options.xAxis.push(day[new Date(this.weather.daily_forecast[i].date).getDay()]);

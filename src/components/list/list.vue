@@ -17,7 +17,7 @@
           <li class="item-list" v-for="city in cities">
             <h1 class="title">{{ city.type.toLocaleUpperCase() }}</h1>
             <ul>
-              <li class="item " v-for="value in city.values" @click="changeCity(value)" v-on:city="getCity">{{ value }}</li>
+              <li class="item " v-for="value in city.values" @click="changeCity(value)">{{ value }}</li>
             </ul>
           </li>
         </ul>
@@ -86,8 +86,7 @@
         });
       },
       changeCity(value) {
-        this.$router.go('/');
-        this.$emit('city', value);
+        this.$router.push({ name: 'index', params: { city: value } });
       }
     }
   };

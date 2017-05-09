@@ -23,6 +23,7 @@
   import {getWeather} from '../../assets/js/getWeather';
 
   export default {
+    props: ['city'],
     data() {
       return {
         weather: {}
@@ -58,7 +59,7 @@
       }
     },
     created() {
-      getWeather().then((res) => {
+      getWeather(this.city).then((res) => {
         this.weather = res;
         this.$nextTick(() => {
           this.initScroll();

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import changeCity from '../components/changeCity/changeCity';
-import App from '../App';
+import index from '../components/index/index';
 
 Vue.use(Router);
 
@@ -15,10 +15,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: App,
-      params: {
-        city: ''
-      }
+      component: index
     }
   ]
 });
