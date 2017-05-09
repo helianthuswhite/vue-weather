@@ -17,7 +17,7 @@
           <li class="item-list" v-for="city in cities">
             <h1 class="title">{{ city.type.toLocaleUpperCase() }}</h1>
             <ul>
-              <li class="item " v-for="value in city.values" @click="changeCity(value)">{{ value }}</li>
+              <li class="item" v-for="value in city.values" @click="changeCity(value)">{{ value }}</li>
             </ul>
           </li>
         </ul>
@@ -37,7 +37,6 @@
       return {
         provinces: [],
         cities: [],
-        itemClick: '',
         isProvince: true
       };
     },
@@ -58,16 +57,14 @@
     methods: {
       initScroll() {
         this.listScroll = new BScroll(this.$refs.listWrapper, {
-          click: true
+          click: true,
+          probeType: 3
         });
       },
       showCity(value, e) {
-        this.itemClick = 'active';
-        let items = document.getElementsByClassName('item');
-        for (let item of items) {
-          item.className = 'item ';
+        if (!event._constructed) {
+          return;
         }
-        e.toElement.className += this.itemClick;
         this.getCities(value);
         this.isProvince = false;
       },
@@ -135,9 +132,6 @@
             border-bottom: solid 1px #ccc;
             &:last-child {
               border: none;
-            }
-            &.active {
-              background: #c2c2c2;
             }
           }
         }
