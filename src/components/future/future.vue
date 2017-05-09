@@ -1,9 +1,9 @@
 <template>
-  <div class="future border-1px" v-if="this.weather">
+  <div class="future border-1px">
     <ul>
       <li v-for="(daily_forecast,index) in this.weather.daily_forecast" class="item" v-if="index !== 0">
         <span class="day">{{ day[new Date(daily_forecast.date).getDay()] }}</span>
-        <span class="icon"><img :src="`../../../static/img/${daily_forecast.cond.code_d}.png`" width="25" height="25"></span>
+        <span class="icon" :class="`icon-${daily_forecast.cond.code_d}`"></span>
         <span class="tmp">
           <span class="min">{{ daily_forecast.tmp.min }}</span>
           <span class="max">{{ daily_forecast.tmp.max }}</span>
@@ -42,6 +42,7 @@
       }
       .icon {
         flex: 1;
+        font-size: 25px;
         text-align: center;
       }
       .tmp {

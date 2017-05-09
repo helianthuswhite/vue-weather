@@ -1,16 +1,16 @@
 <template>
   <div class="today">
-    <div class="today-header border-1px" v-if="this.weather.daily_forecast">
+    <div class="today-header border-1px">
       <span class="day">星期{{ day }} 今天</span>
       <span class="mintmp">{{ this.weather.daily_forecast[0].tmp.min }}</span>
       <span class="maxtmp">{{ this.weather.daily_forecast[0].tmp.max }}</span>
     </div>
-    <div class="today-body border-1px clearfix" ref="hourWrapper" v-if="this.weather.hourly_forecast">
+    <div class="today-body border-1px clearfix" ref="hourWrapper">
       <ul>
         <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly_forecast">
           <span class="time">{{ index == 0?'现在':hour_forecast.date.substr(hour_forecast.date.length - 5) }}</span>
           <span class="pop">{{ hour_forecast.pop }}%</span>
-          <img class="icon" src="../../../static/img/306.png" height="25" width="25">
+          <span class="icon icon-306"></span>
           <span class="tmp">{{ hour_forecast.tmp }}°</span>
         </li>
       </ul>
@@ -20,13 +20,11 @@
 
 <script>
   import BScroll from 'better-scroll';
-  import {getWeather} from '../../assets/js/getWeather';
 
   export default {
-    props: ['city'],
+    props: ['weather'],
     data() {
       return {
-        weather: {}
       };
     },
     computed: {
@@ -59,11 +57,8 @@
       }
     },
     created() {
-      getWeather(this.city).then((res) => {
-        this.weather = res;
-        this.$nextTick(() => {
-          this.initScroll();
-        });
+      this.$nextTick(() => {
+        this.initScroll();
       });
     },
     methods: {
@@ -123,6 +118,10 @@
             font-size: 8px;
             line-height: 0px;
             padding: 5px 0 10px;
+          }
+          &.icon {
+            font-size: 25px;
+            height: 25px;
           }
         }
       }

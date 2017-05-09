@@ -1,11 +1,11 @@
 <template>
-  <div style="position:relative;">
+  <div style="position:relative;" v-if="weather">
     <v-header :weather="weather"></v-header>
     <div class="app-body">
       <div class="wrapper">
-        <today :city="city"></today>
+        <today :weather="weather"></today>
         <future :weather="weather"></future>
-        <tendency :city="city"></tendency>
+        <tendency :weather="weather"></tendency>
         <v-summary :weather="weather"></v-summary>
         <v-details :weather="weather"></v-details>
       </div>
@@ -23,7 +23,6 @@ import tendency from '../tendency/tendency.vue';
 import summary from '../summary/summary.vue';
 import details from '../details/details.vue';
 import footer from '../footer/footer.vue';
-import background from '../background/background.vue';
 
 import {getWeather} from '../../assets/js/getWeather';
 
@@ -36,12 +35,11 @@ export default {
     tendency,
     'v-summary': summary,
     'v-details': details,
-    'v-footer': footer,
-    background
+    'v-footer': footer
   },
   data() {
     return {
-      weather: {},
+      weather: null,
       city: null
     };
   },

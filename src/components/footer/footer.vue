@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
-    <span class="github"><a href="http://github.com/helianthuswhite/vue-weather"></a></span>
-    <span class="change-city"><router-link to="/city"></router-link></span>
+    <span class="github icon-github"><a href="http://github.com/helianthuswhite/vue-weather"></a></span>
+    <span class="change-city icon-501"><router-link to="/city"></router-link></span>
   </div>
 </template>
 
@@ -53,20 +53,19 @@
       box-sizing: border-box;
       width: 35px;
       height: 35px;
-      font-size: 12px;
+      color: #fff;
+      font-size: 35px;
       &.github {
         margin-left: 15px;
-        background-image: url('../../../static/img/github.png');
-        background-size: 100% 100%;
       }
       &.change-city {
         position: absolute;
         right: 15px;
-        background-image: url('../../../static/img/501.png');
-        background-size: 100% 100%;
       }
       a {
         display: block;
+        position: absolute;
+        top: 0;
         width: 100%;
         height: 100%;
       }

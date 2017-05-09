@@ -1,5 +1,5 @@
 <template>
-  <div class="details" v-if="this.weather.daily_forecast">
+  <div class="details">
     <div class="row" v-for="(key,value) in details">
       <div class="cell left">{{ value }}</div>
       <div class="cell right">{{ key }}</div>
