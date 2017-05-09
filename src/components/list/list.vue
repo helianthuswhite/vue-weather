@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="search">
-      <input type="text" name="province" placeholder="搜索" class="input">
+      <input type="text" placeholder="搜索" v-model="search" v-on:propertychange="searchValue($event)" v-on:input="searchValue($event)" class="input">
     </div>
     <div class="list-wrapper" ref="listWrapper">
       <ul v-if="isProvince">
@@ -37,7 +37,8 @@
       return {
         provinces: [],
         cities: [],
-        isProvince: true
+        isProvince: true,
+        search: ''
       };
     },
     created() {
@@ -84,6 +85,16 @@
       },
       changeCity(value) {
         this.$router.push({ name: 'index', params: { city: value } });
+      },
+      searchValue(e) {
+        let items = document.getElementsByClassName('item');
+        let item;
+        for (let i in items) {
+          if (items[i].innerHTML === this.search) {
+            item = items[i];
+          }
+        }
+        this.listScroll.scrollToElement(item, 300);
       }
     }
   };
