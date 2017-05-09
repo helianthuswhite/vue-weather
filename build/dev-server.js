@@ -67,8 +67,6 @@ for (let i in appData) {
   }
 }
 
-console.log(cityData);
-
 for (let province of provinceData) {
   var s = new Set(province.values);
   province.values = Array.from(s).map(x => x);

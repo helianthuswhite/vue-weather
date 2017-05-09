@@ -49,7 +49,6 @@ export default {
     this.city = this.$route.params.city;
     getWeather(this.city).then((res) => {
       this.weather = res;
-      console.log(this.weather);
     });
   }
 };
