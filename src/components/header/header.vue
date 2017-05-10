@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-   <div class="content" v-if="this.weather.basic">
+   <div class="content">
      <p class="city">{{ this.weather.basic.city }}市</p>
      <p class="weather">{{ this.weather.now.cond.txt }}</p>
      <p class="temper">{{ this.weather.now.tmp }}<span class="dot">°</span></p>
