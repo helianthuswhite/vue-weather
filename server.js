@@ -7,7 +7,7 @@ var path = require('path');
 
 var appData = require('./cityList.json');
 
-app.use('/static', express.static(path.join(__dirname,'/dist/public')));
+app.use('/static', express.static(path.join(__dirname,'/dist/static')));
 
 app.get('/',function (req,res) {
   res.sendFile(__dirname + '/dist/index.html');
