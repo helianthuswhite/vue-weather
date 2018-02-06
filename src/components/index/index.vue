@@ -24,7 +24,7 @@ import summary from '../summary/summary.vue';
 import details from '../details/details.vue';
 import footer from '../footer/footer.vue';
 
-import {getWeather} from '../../assets/js/getWeather';
+import {getWeather} from '../../assets/js/util';
 
 export default {
   name: 'index',

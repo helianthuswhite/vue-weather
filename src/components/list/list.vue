@@ -31,6 +31,7 @@
 
 <script>
   import BScroll from 'better-scroll';
+  import {loadProvince, loadCity} from '../../assets/js/util';
 
   export default {
     data() {
@@ -42,11 +43,11 @@
       };
     },
     created() {
-      this.$http.get('/api/province').then((res) => {
-        if (res.body.errno === 0) {
-          for (let i in res.body.data) {
-            if (res.body.data[i].values.length !== 0) {
-              this.provinces.push(res.body.data[i]);
+      loadProvince().then(res => {
+        if (res.errno === 0) {
+          for (let i in res.data) {
+            if (res.data[i].values.length !== 0) {
+              this.provinces.push(res.data[i]);
             }
           }
           this.$nextTick(() => {
@@ -70,11 +71,11 @@
         this.isProvince = false;
       },
       getCities(province) {
-        this.$http.get('/api/city').then((res) => {
-          if (res.body.errno === 0) {
-            for (let j in res.body.data[province]) {
-              if (res.body.data[province][j].values.length !== 0) {
-                this.cities.push(res.body.data[province][j]);
+        loadCity().then(res => {
+          if (res.errno === 0) {
+            for (let j in res.data[province]) {
+              if (res.data[province][j].values.length !== 0) {
+                this.cities.push(res.data[province][j]);
               }
             }
             this.$nextTick(() => {
