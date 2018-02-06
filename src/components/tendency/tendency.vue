@@ -28,8 +28,8 @@
       const day = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
       for (let i = 0; i < 7; i++) {
         this.options.xAxis.push(day[new Date(this.weather.daily_forecast[i].date).getDay()]);
-        this.options.minTmp.push(this.weather.daily_forecast[i].tmp.min);
-        this.options.maxTmp.push(this.weather.daily_forecast[i].tmp.max);
+        this.options.minTmp.push(this.weather.daily_forecast[i].tmp_min);
+        this.options.maxTmp.push(this.weather.daily_forecast[i].tmp_max);
       }
       this.$nextTick(() => {
         init(this.options);

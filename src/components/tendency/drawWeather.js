@@ -12,7 +12,7 @@ let maxTmp = 0;
 /**
  * 画X轴
  * */
-const drawXAxis = (xAxisData) => {
+const drawXAxis = xAxisData => {
   context.beginPath();
   context.moveTo(yAxisWidth, canvas.height - xAxisHeight);
   context.lineTo(canvas.width - yAxisWidth, canvas.height - xAxisHeight);
@@ -46,7 +46,7 @@ const drawYAxis = (yMax, step) => {
 /**
  * 画线条
  * */
-const drawLine = (lineData) => {
+const drawLine = lineData => {
   context.beginPath();
   context.fillStyle = '#ffffff';
   context.lineWidth = 1;
@@ -65,7 +65,7 @@ const drawLine = (lineData) => {
   }
 };
 
-const init = (settings) => {
+export const init = settings => {
   canvas = document.getElementById('canvas');
   canvas.width = settings.width;
   canvas.height = settings.height;
@@ -81,5 +81,3 @@ const init = (settings) => {
   drawLine(maxTmp);
   drawLine(minTmp);
 };
-
-export { init };

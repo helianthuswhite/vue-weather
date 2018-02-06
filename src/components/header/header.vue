@@ -1,8 +1,8 @@
 <template>
   <div class="header">
    <div class="content">
-     <p class="city">{{ this.weather.basic.city }}市</p>
-     <p class="weather">{{ this.weather.now.cond.txt }}</p>
+     <p class="city">{{ this.weather.basic.location }}市</p>
+     <p class="weather">{{ this.weather.now.cond_txt }}</p>
      <p class="temper">{{ this.weather.now.tmp }}<span class="dot">°</span></p>
    </div>
   </div>

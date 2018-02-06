@@ -1,12 +1,12 @@
 <template>
   <div class="future border-1px">
     <ul>
-      <li v-for="(daily_forecast,index) in this.weather.daily_forecast" class="item" v-if="index !== 0">
+      <li v-for="(daily_forecast,index) in this.weather.daily_forecast" class="item">
         <span class="day">{{ day[new Date(daily_forecast.date).getDay()] }}</span>
-        <span class="icon" :class="`icon-${daily_forecast.cond.code_d}`"></span>
+        <span class="icon" :class="`icon-${daily_forecast.cond_code_d}`"></span>
         <span class="tmp">
-          <span class="min">{{ daily_forecast.tmp.min }}</span>
-          <span class="max">{{ daily_forecast.tmp.max }}</span>
+          <span class="min">{{ daily_forecast.tmp_min }}</span>
+          <span class="max">{{ daily_forecast.tmp_max }}</span>
         </span>
       </li>
     </ul>
@@ -50,7 +50,11 @@
         line-height: 25px;
         text-align: right;
         .min {
-          margin-right: 15px;
+          margin-right: 5px;
+        }
+        .max {
+          display: inline-block;
+          width: 20px;
         }
       }
     } 

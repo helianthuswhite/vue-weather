@@ -2,13 +2,13 @@
   <div class="today">
     <div class="today-header border-1px">
       <span class="day">星期{{ day }} 今天</span>
-      <span class="mintmp">{{ this.weather.daily_forecast[0].tmp.min }}</span>
-      <span class="maxtmp">{{ this.weather.daily_forecast[0].tmp.max }}</span>
+      <span class="mintmp">{{ this.weather.daily_forecast[0].tmp_min }}</span>
+      <span class="maxtmp">{{ this.weather.daily_forecast[0].tmp_max }}</span>
     </div>
     <div class="today-body border-1px clearfix" ref="hourWrapper">
       <ul>
-        <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly_forecast">
-          <span class="time">{{ index == 0?'现在':hour_forecast.date.substr(hour_forecast.date.length - 5) }}</span>
+        <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly">
+          <span class="time">{{ index == 0?'现在':hour_forecast.time.substr(hour_forecast.time.length - 5) }}</span>
           <span class="pop">{{ hour_forecast.pop }}%</span>
           <span class="icon icon-306"></span>
           <span class="tmp">{{ hour_forecast.tmp }}°</span>

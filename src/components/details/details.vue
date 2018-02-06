@@ -17,37 +17,20 @@
     },
     computed: {
       details () {
-        if (!this.weather.aqi) {
-          return {
-            '日出：': this.weather.daily_forecast[0].astro.sr,
-            '日落：': this.weather.daily_forecast[0].astro.ss,
-            '降雨概率：': `${this.weather.daily_forecast[0].pop}%`,
-            '相对湿度：': this.weather.daily_forecast[0].hum,
-            '气压：': `${this.weather.daily_forecast[0].pres}百帕`,
-            '能见度：': `${this.weather.daily_forecast[0].vis}公里`,
-            '紫外线强度：': this.weather.suggestion.uv.brf,
-            '体感温度：': `${this.weather.now.fl}°`,
-            '风速：': `${this.weather.now.wind.dir} ${this.weather.now.wind.sc}级`,
-            '穿衣指数：': this.weather.suggestion.drsg.txt,
-            '感冒指数：': this.weather.suggestion.flu.txt,
-            '运动指数：': this.weather.suggestion.sport.txt
-          };
-        }
         return {
-          '日出：': this.weather.daily_forecast[0].astro.sr,
-          '日落：': this.weather.daily_forecast[0].astro.ss,
+          '日出：': this.weather.daily_forecast[0].sr,
+          '日落：': this.weather.daily_forecast[0].ss,
           '降雨概率：': `${this.weather.daily_forecast[0].pop}%`,
           '相对湿度：': this.weather.daily_forecast[0].hum,
           '气压：': `${this.weather.daily_forecast[0].pres}百帕`,
           '能见度：': `${this.weather.daily_forecast[0].vis}公里`,
-          '紫外线强度：': this.weather.suggestion.uv.brf,
+          '紫外线强度：': this.weather.lifestyle[5].brf,
           '体感温度：': `${this.weather.now.fl}°`,
-          '风速：': `${this.weather.now.wind.dir} ${this.weather.now.wind.sc}级`,
-          '空气质量指数：': this.weather.aqi.city.aqi,
-          '空气质量：': this.weather.aqi.city.qlty,
-          '穿衣指数：': this.weather.suggestion.drsg.txt,
-          '感冒指数：': this.weather.suggestion.flu.txt,
-          '运动指数：': this.weather.suggestion.sport.txt
+          '风速：': `${this.weather.now.wind_dir} ${this.weather.now.wind_spd}公里/小时`,
+          '空气质量指数：': this.weather.lifestyle[7].brf,
+          '穿衣指数：': this.weather.lifestyle[1].brf,
+          '感冒指数：': this.weather.lifestyle[2].brf,
+          '运动指数：': this.weather.lifestyle[3].brf
         };
       }
     }
