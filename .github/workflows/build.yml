@@ -38,6 +38,6 @@ jobs:
           npm run build
           
       - name: Deploy to gh-pages
-        uses: actions/deploy-pages@v1.2.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          artifact_name: ./dist
+          folder: dist
