@@ -39,3 +39,5 @@ jobs:
           
       - name: Deploy to gh-pages
         uses: actions/deploy-pages@v1.2.3
+        with:
+          artifact_name: ./dist
