@@ -1,10 +1,10 @@
 # vue-weather
 
-> a Web App to show weather with vue.js 
+> a Web App to show weather with vue.js
 
 ## Preview
 
-> To Preview http://helianthuswhite.cn/projects/vue-weather
+> To Preview http://helianthuswhite.cn/vue-weather
 
 界面一：
 
@@ -29,5 +29,3 @@
 ## License
 
 > MIT copyright helianthuswhite
-
-
