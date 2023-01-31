@@ -8,23 +8,10 @@
 
 界面一：
 
-![图片预览](http://oetmrek6t.bkt.clouddn.com/project_vue_weather_1.png)
+<img width="312" alt="image" src="https://user-images.githubusercontent.com/12878076/215650491-e9c652ca-ddf0-487b-a3c7-8d9b074583cc.png"> <img width="311" alt="image" src="https://user-images.githubusercontent.com/12878076/215650610-60efc090-3c94-4cfd-8ade-d4ad4b21c1eb.png">
 
-界面二：
+<img width="311" alt="image" src="https://user-images.githubusercontent.com/12878076/215650809-fa13fb95-7341-4ebe-ab47-4a3824fcda4f.png"> <img width="311" alt="image" src="https://user-images.githubusercontent.com/12878076/215651012-3e2a531a-0151-489f-a849-8791605a183a.png">
 
-![图片预览](http://oetmrek6t.bkt.clouddn.com/project_vue_weather_2.png)
-
-界面三：
-
-![图片预览](http://oetmrek6t.bkt.clouddn.com/project_vue_weather_3.png)
-
-界面四：
-
-![图片预览](http://oetmrek6t.bkt.clouddn.com/project_vue_weather_4.png)
-
-界面五：
-
-![图片预览](http://oetmrek6t.bkt.clouddn.com/project_vue_weather_5.png)
 
 ## License
 
