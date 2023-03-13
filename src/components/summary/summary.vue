@@ -1,6 +1,6 @@
 <template>
   <div class="summary border-1px">
-    <p class="content">今天：白天天气{{ this.weather.daily_forecast[0].cond_txt_d }}，夜晚天气{{ this.weather.daily_forecast[0].cond_txt_n }}，最高气温{{ this.weather.daily_forecast[0].tmp_max }}°，最低气温为{{ this.weather.daily_forecast[0].tmp_min }}°，{{ this.weather.daily_forecast[0].wind_dir }}{{ this.weather.daily_forecast[0].wind_sc }}级。</p>
+    <p class="content">今天：白天天气{{ this.weather.daily_forecast[0].textDay }}，夜晚天气{{ this.weather.daily_forecast[0].textNight }}，最高气温{{ this.weather.daily_forecast[0].tempMax }}°，最低气温为{{ this.weather.daily_forecast[0].tempMin }}°，{{ this.weather.daily_forecast[0].windDirDay }}{{ this.weather.daily_forecast[0].windScaleDay }}级。</p>
   </div>
 </template>
 

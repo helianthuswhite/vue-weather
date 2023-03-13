@@ -39,13 +39,12 @@ export default {
   },
   data() {
     return {
-      weather: null,
-      city: null
+      weather: null
     };
   },
   created() {
-    this.city = this.$route.params.city;
-    getWeather(this.city).then(res => {
+    const {lon, lat} = this.$route.params;
+    getWeather(lon ? {lon, lat} : null).then(res => {
       this.weather = res;
     });
   }

@@ -62,7 +62,7 @@ for (let province in cityData) {
 for (let i in cityList) {
   for (let city of cityData[cityList[i].provinceZh]) {
     if (city.type === cityList[i].cityEn[0]) {
-      city.values.push(cityList[i].cityZh);
+      city.values.push(cityList[i]);
     }
   }
 }
@@ -76,24 +76,50 @@ const getCity = () =>
   Vue.http
     .jsonp(`https://api.map.baidu.com/location/ip?ak=${baiduKey}&coor=bd09ll`)
     .then(
-      (response) => response.body.content.address_detail.city.split('市')[0]
+      (response) => response.body.content.point
     ).catch(() => {
       console.error('根据IP获取城市信息失败');
-      return '北京';
+      return { x: '116.41338370', y: '39.91092455' };
     });
 
-const queryWeather = (resolve, city) =>
-  Vue.http
-    .get(
-      `https://free-api.heweather.com/s6/weather?key=${apikey}&location=${city}`
+export const getCityByLocation = (location) => Vue.http
+  .get(`https://geoapi.qweather.com/v2/city/lookup?key=${apikey}&location=${location}`)
+  .then(
+    (response) => response.body.location[0]
+  ).catch(() => {
+    console.error('根据经纬度获取城市信息失败');
+  });
+
+const queryWeather = (resolve, city) => {
+  Promise.all([
+    Vue.http.get(
+      `https://devapi.qweather.com/v7/weather/now?key=${apikey}&location=${city}`
+    ),
+    Vue.http.get(
+      `https://devapi.qweather.com/v7/weather/7d?key=${apikey}&location=${city}`
+    ),
+    Vue.http.get(
+      `https://devapi.qweather.com/v7/weather/24h?key=${apikey}&location=${city}`
+    ),
+    Vue.http.get(
+      `https://devapi.qweather.com/v7/indices/1d?key=${apikey}&location=${city}&type=10,3,9,1`
     )
-    .then((res) => resolve(res.body['HeWeather6'][0]));
+  ]).then((res) => {
+    resolve({
+      location: city,
+      now: res[0].body.now,
+      daily_forecast: res[1].body.daily,
+      hourly: res[2].body.hourly,
+      lifestyle: res[3].body.daily
+    });
+  });
+};
 
 export const getWeather = (args) =>
   new Promise((resolve, reject) =>
     args
-      ? queryWeather(resolve, args)
-      : getCity().then((city) => queryWeather(resolve, city))
+      ? queryWeather(resolve, `${args.lon},${args.lat}`)
+      : getCity().then((city) => queryWeather(resolve, `${city.x},${city.y}`))
   );
 
 export const loadProvince = (args) =>

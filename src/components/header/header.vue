@@ -1,18 +1,27 @@
 <template>
   <div class="header">
    <div class="content">
-     <p class="city">{{ this.weather.basic.location }}市</p>
-     <p class="weather">{{ this.weather.now.cond_txt }}</p>
-     <p class="temper">{{ this.weather.now.tmp }}<span class="dot">°</span></p>
+     <p class="city">{{ this.city || '城市获取失败' }}</p>
+     <p class="weather">{{ this.weather.now.text }}</p>
+     <p class="temper">{{ this.weather.now.temp }}<span class="dot">°</span></p>
    </div>
   </div>
 </template>
 
 <script>
+  import {getCityByLocation} from '../../assets/js/util';
+
   export default {
     props: ['weather'],
     data() {
-      return {};
+      return {
+        city: ''
+      };
+    },
+    created() {
+      getCityByLocation(this.weather.location).then(res => {
+        this.city = res.name;
+      });
     }
   };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div class="future border-1px">
     <ul>
-      <li v-for="(daily_forecast,index) in this.weather.daily_forecast" class="item">
-        <span class="day">{{ day[new Date(daily_forecast.date).getDay()] }}</span>
-        <span class="icon" :class="`icon-${daily_forecast.cond_code_d}`"></span>
+      <li v-for="(daily_forecast,index) in this.weather.daily_forecast" :key="index" class="item">
+        <span class="day">{{ day[new Date(daily_forecast.fxDate).getDay()] }}</span>
+        <span class="icon" :class="`qi-${daily_forecast.iconDay}`"></span>
         <span class="tmp">
-          <span class="min">{{ daily_forecast.tmp_min }}</span>
-          <span class="max">{{ daily_forecast.tmp_max }}</span>
+          <span class="min">{{ daily_forecast.tempMin }}°</span>
+          <span class="max">{{ daily_forecast.tempMax }}°</span>
         </span>
       </li>
     </ul>
@@ -57,6 +57,6 @@
           width: 20px;
         }
       }
-    } 
+    }
   }
 </style>

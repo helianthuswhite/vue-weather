@@ -2,16 +2,16 @@
   <div class="today">
     <div class="today-header border-1px">
       <span class="day">星期{{ day }} 今天</span>
-      <span class="mintmp">{{ this.weather.daily_forecast[0].tmp_min }}</span>
-      <span class="maxtmp">{{ this.weather.daily_forecast[0].tmp_max }}</span>
+      <span class="mintmp">{{ this.weather.daily_forecast[0].tempMin }}°</span>
+      <span class="maxtmp">{{ this.weather.daily_forecast[0].tempMax }}°</span>
     </div>
     <div class="today-body border-1px clearfix" ref="hourWrapper">
       <ul>
-        <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly">
-          <span class="time">{{ index == 0?'现在':hour_forecast.time.substr(hour_forecast.time.length - 5) }}</span>
+        <li class="hour" v-for="(hour_forecast,index) in this.weather.hourly" :key="index">
+          <span class="time">{{ index == 0?'现在':hour_forecast.fxTime.substring(hour_forecast.fxTime.length - 11, hour_forecast.fxTime.length - 6) }}</span>
           <span class="pop">{{ hour_forecast.pop }}%</span>
-          <span class="icon icon-306"></span>
-          <span class="tmp">{{ hour_forecast.tmp }}°</span>
+          <span class="icon" :class="`qi-${hour_forecast.icon}`"></span>
+          <span class="tmp">{{ hour_forecast.temp }}°</span>
         </li>
       </ul>
     </div>
@@ -31,7 +31,7 @@
       day() {
         let day = '日';
         if (!this.weather.daily_forecast) return day;
-        switch (new Date(this.weather.daily_forecast[0].date).getDay()) {
+        switch (new Date(this.weather.daily_forecast[0].fxDate).getDay()) {
           case 1:
             day = '一';
             break;

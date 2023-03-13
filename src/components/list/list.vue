@@ -5,19 +5,19 @@
     </div>
     <div class="list-wrapper" ref="listWrapper">
       <ul v-if="isProvince">
-        <li class="item-list" v-for="province in provinces">
+        <li class="item-list" v-for="province,index in provinces" :key="index">
           <h1 class="title">{{ province.type.toLocaleUpperCase() }}</h1>
           <ul>
-            <li class="item " v-for="value in province.values" @click="showCity(value, $event)">{{ value }}</li>
+            <li class="item " v-for="value,j in province.values" :key="j" @click="showCity(value, $event)">{{ value }}</li>
           </ul>
         </li>
       </ul>
       <transition name="translate">
         <ul v-if="!isProvince">
-          <li class="item-list" v-for="city in cities">
+          <li class="item-list" v-for="city,index in cities" :key="index">
             <h1 class="title">{{ city.type.toLocaleUpperCase() }}</h1>
             <ul>
-              <li class="item" v-for="value in city.values" @click="changeCity(value)">{{ value }}</li>
+              <li class="item" v-for="value,j in city.values" :key="j" @click="changeCity(value)">{{ value.cityZh }}</li>
             </ul>
           </li>
         </ul>
@@ -85,7 +85,7 @@
         });
       },
       changeCity(value) {
-        this.$router.push({ name: 'index', params: { city: value } });
+        this.$router.push({ name: 'index', params: {lon: value.lon, lat: value.lat} });
       },
       searchValue(e) {
         let items = document.getElementsByClassName('item');
